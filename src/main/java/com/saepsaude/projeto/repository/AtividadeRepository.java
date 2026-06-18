@@ -1,6 +1,7 @@
 package com.saepsaude.projeto.repository;
 
 import com.saepsaude.projeto.model.Atividade;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface AtividadeRepository extends JpaRepository<Atividade, Long> {
     @Query("SELECT a FROM Atividade a WHERE :tipo IS NULL OR a.tipoAtividade = :tipo ORDER BY a.createdAt DESC")
-    List<Atividade> findByTipoAtividade(@Param("tipo") String tipo, Pageable pageable);
+    Page<Atividade> findByTipoAtividade(@Param("tipo") String tipo, Pageable pageable);
 
     long countByTipoAtividade(Long usuarioId);
 
