@@ -24,4 +24,6 @@ public class Atividade {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+
 }
